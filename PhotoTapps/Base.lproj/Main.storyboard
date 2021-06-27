@@ -4,6 +4,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -44,6 +46,7 @@
                                 </collectionViewCellContentView>
                                 <connections>
                                     <outlet property="filmImageView" destination="a4d-wB-iHm" id="tNW-82-N7V"/>
+                                    <segue destination="03f-uc-DqN" kind="presentation" identifier="pickPhotoSegue" id="5ex-tN-GnP"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -57,6 +60,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dv5-r3-9AB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1049.2753623188407" y="131.91964285714286"/>
+        </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="OYh-hS-4cN">
+            <objects>
+                <viewController id="03f-uc-DqN" customClass="PhotoViewController" customModule="PhotoTapps" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qb8-ug-QD4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tU3-se-35h">
+                                <rect key="frame" x="0.0" y="317.5" width="414" height="207"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="207" id="VKo-Da-Oho"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTS-gI-ROC">
+                                <rect key="frame" x="145.5" y="733" width="123" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="123" id="YkW-Ty-TRE"/>
+                                </constraints>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Tap to share">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageReference key="image" image="hand.wave" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareAction:" destination="03f-uc-DqN" eventType="touchUpInside" id="8N3-rH-keC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ay8-0g-hXW"/>
+                        <color key="backgroundColor" systemColor="systemGray3Color"/>
+                        <constraints>
+                            <constraint firstItem="tU3-se-35h" firstAttribute="leading" secondItem="Ay8-0g-hXW" secondAttribute="leading" id="ETR-i9-kEc"/>
+                            <constraint firstItem="Ay8-0g-hXW" firstAttribute="bottom" secondItem="uTS-gI-ROC" secondAttribute="bottom" constant="51" id="I6i-it-jbi"/>
+                            <constraint firstItem="uTS-gI-ROC" firstAttribute="centerX" secondItem="Qb8-ug-QD4" secondAttribute="centerX" id="Sg0-vm-bv8"/>
+                            <constraint firstItem="Ay8-0g-hXW" firstAttribute="trailing" secondItem="tU3-se-35h" secondAttribute="trailing" id="XgS-In-3os"/>
+                            <constraint firstItem="tU3-se-35h" firstAttribute="centerY" secondItem="Qb8-ug-QD4" secondAttribute="centerY" id="jhO-bb-KHv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="photoImageView" destination="tU3-se-35h" id="3eZ-ys-JK5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D6M-Sf-jV1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1853.6231884057972" y="145.98214285714286"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ld0-ej-l0I">
@@ -78,8 +128,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="hand.wave" catalog="system" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -23,6 +23,8 @@ class PhotosCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
 //        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
 //        layout.itemSize = CGSize(width: 70, height: 30)
@@ -33,6 +35,16 @@ class PhotosCollectionViewController: UICollectionViewController {
          
         
        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "pickPhotoSegue" {
+            let photoVC = segue.destination as! PhotoViewController
+            let cell = sender as! PhotoCell
+            photoVC.image = cell.filmImageView.image
+            
+            
+        }
     }
 
     
@@ -59,6 +71,7 @@ class PhotosCollectionViewController: UICollectionViewController {
         
         cell.filmImageView.image = image
         cell.backgroundColor = .black
+        cell.layer.cornerRadius = CGFloat(20)
     
         // Configure the cell
     
@@ -88,5 +101,7 @@ extension PhotosCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         sectionInserts.left
     }
+    
+    
 }
 
